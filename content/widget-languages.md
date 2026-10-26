@@ -31,7 +31,7 @@ On any site, `data-language="ru"` makes it Russian:
 @clip widget-russian | The widget code sets Russian. The customer writes in Russian and gets an answer in Russian.
 
 ```html
-<script src="https://app.replybek.uz/widget.js"
+<script src="https://app.replybek.uz/api/widget.js"
   data-key="pk_your_agent_key"
   data-api="https://app.replybek.uz/api"
   data-language="ru"

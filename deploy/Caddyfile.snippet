@@ -1,0 +1,6 @@
+# docs.replybek.uz: the help docs (replybek-docs container, /opt/replybek-docs/site).
+# Added once to the main Caddy, /opt/didar-app/Caddyfile.
+docs.replybek.uz {
+    encode zstd gzip
+    reverse_proxy replybek-docs:80
+}

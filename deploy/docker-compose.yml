@@ -1,0 +1,17 @@
+# docs.replybek.uz on the Hetzner server, next to replybek.uz and app.replybek.uz: the built
+# dist/ as static files. The server's main Caddy forwards docs.replybek.uz here (Caddyfile.snippet).
+services:
+  site:
+    image: caddy:2.11.3
+    container_name: replybek-docs
+    restart: unless-stopped
+    command: caddy file-server --root /srv --listen :80
+    volumes:
+      - ./site:/srv:ro
+    mem_limit: 64m
+    networks: [web]
+
+networks:
+  web:
+    external: true
+    name: didar_default         # the main Caddy's network
