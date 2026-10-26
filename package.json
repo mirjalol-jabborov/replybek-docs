@@ -1,0 +1,14 @@
+{
+  "name": "replybek-docs",
+  "private": true,
+  "type": "module",
+  "description": "docs.replybek.uz: how to use Replybek, built from content/*.md",
+  "scripts": {
+    "build": "node build.mjs",
+    "dev": "node build.mjs && python3 serve.py 5185",
+    "record": "node recorder/record.mjs"
+  },
+  "dependencies": {
+    "marked": "^14.1.4"
+  }
+}
