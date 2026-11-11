@@ -43,7 +43,7 @@ By default, any website can load your widget. To make sure only yours can, add y
 
 ## Choose the language
 
-The widget speaks Uzbek, Russian and English. To fix the language instead of following your site and the visitor's browser, add `data-language="uz"`, `"ru"` or `"en"` to the code. See [Widget languages](widget-languages).
+The widget follows your site's language, then the visitor's browser. It has its buttons and labels in 16 languages, and translates your greeting and suggested questions automatically for pages in a language you haven't written them in. To fix the language, add `data-language` with any supported code, like `data-language="ja"` or `data-language="ar"`. See [Widget languages](widget-languages) for the list.
 
 ## Tell the chat who's signed in
 
