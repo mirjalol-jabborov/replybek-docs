@@ -4,7 +4,7 @@ nav: Welcome
 description: Replybek gives your business AI agents that answer customers from your own knowledge, act in your systems with the customer's confirmation, and hand off to your team.
 ---
 
-Replybek works in Uzbek, Russian and English. You teach an AI agent your business, put its chat on your website, and watch every conversation from one inbox.
+Replybek is built for Uzbekistan and speaks your customers' languages: the chat works in 16, including Uzbek, Russian and English. You teach an AI agent your business, put its chat on your website, and watch every conversation from one inbox.
 
 ## How it works
 
