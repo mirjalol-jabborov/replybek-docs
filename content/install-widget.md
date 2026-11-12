@@ -8,7 +8,7 @@ The widget is the chat window on your website. Each agent has its own widget, wi
 
 ## Copy the code
 
-Open **Website widget** in the sidebar, pick the agent at the top, and scroll to **Install**. Press **Copy code**. You can also open it from the agent's **⋯** menu, under **Install widget**.
+Open **Channels** in the sidebar, pick the agent at the top, and press **Website widget**. Scroll to **Install**. Press **Copy code**. You can also open it from the agent's **⋯** menu, under **Install widget**.
 
 ```html
 <script src="https://app.replybek.uz/api/widget.js"

@@ -4,7 +4,7 @@
 #   ./deploy/deploy-from-mac.sh
 # The main Caddy needs the block in deploy/Caddyfile.snippet once.
 set -e
-SERVER=root@77.42.79.190
+SERVER=root@195.201.245.218
 
 cd "$(dirname "$0")/.."
 node build.mjs

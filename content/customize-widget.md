@@ -4,7 +4,7 @@ nav: Customize the widget
 description: Make the chat look like your brand. Colour, logo, name and welcome message, with a live preview.
 ---
 
-Open **Website widget** in the sidebar and pick the agent at the top. The preview on the right shows your changes as you make them. Press **Save changes** when you're done. Visitors see the new look the next time the widget loads.
+Open **Channels** in the sidebar, pick the agent at the top, and press **Website widget**. The preview on the right shows your changes as you make them. Press **Save changes** when you're done. Visitors see the new look the next time the widget loads.
 
 @clip widget-customize | Pick a colour, upload a logo, set the name and welcome, then save.
 

@@ -21,7 +21,7 @@ export async function installWidget({ browser }) {
   await publishedAgent(ctx);
   const page = await ctx.newPage();
   const act = actor(page);
-  await page.goto(`${APP}/#/widget`);
+  await page.goto(`${APP}/#/channels/website`);
   await page.waitForSelector("#wg-origin");
   await page.evaluate(() => document.querySelector(".page-body")?.scrollBy({ top: 9999 }));
   await act.pause(800);
@@ -54,7 +54,7 @@ export async function customizeWidget({ browser }) {
   const logo = await logoPng(browser);
   const page = await ctx.newPage();
   const act = actor(page);
-  await page.goto(`${APP}/#/widget`);
+  await page.goto(`${APP}/#/channels/website`);
   await page.waitForSelector(".swatches");
   await act.pause(800);
 
@@ -143,7 +143,8 @@ export async function visitorExperience({ browser }) {
   });
 
   await record(page, "visitor-person", { crop: widgetCrop(page), holdEnd: 2600 }, async () => {
-    await act.click("#replybek-widget button:has-text('Start a new chat')");
+    // The footer's new-chat button is an icon; its name is in aria-label.
+    await act.click("#replybek-widget button.new-chat");
     await act.pause(900);
     await act.type("#replybek-widget input[type=text]", "Do you make custom team jackets with a logo?");
     await act.press("Enter");

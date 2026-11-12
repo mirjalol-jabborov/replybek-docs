@@ -7,17 +7,21 @@ Open **Agents** in the sidebar to see every agent in your workspace. Most busine
 
 ## Create an agent
 
-Press **Create agent**. Setup has three short steps:
+Press **Create agent**. The same setup you used for your [first agent](first-agent) opens full screen:
 
 :::steps
-1. **Basics.** Give the agent a name visitors will see in the chat, and describe its job in a sentence or two.
-2. **Knowledge.** Pick its first source: a page or section of your **website**, **files** like PDF or Word documents, or a **Q&A** answer you write yourself. You can also skip this and add knowledge later.
-3. **Review.** Check the summary and press **Create agent**.
+1. **Website.** Type the address this agent should learn from and press **Build my agent**. No website for this job? Press **Upload documents** instead.
+2. **Brand.** Check the business name, logo, chat colour and welcome message. Give the agent its own **Agent name**, like *Northstar returns*, so your team can tell your agents apart.
+3. **Training.** Replybek reads the pages and writes a few starter questions.
+4. **Try it.** Ask what a customer would ask.
+5. **Go live.** Replybek publishes the agent and shows the code for its widget.
 :::
 
-@clip agents-create | Create an agent with a written Q&A answer as its first knowledge.
+@clip agents-create | Create a second agent from the website, with a name of its own.
 
-A new agent starts as a **draft** with a friendly tone, a default welcome message and human handoff turned on. Test and adjust it in the [Playground](playground), then publish it.
+Changed your mind? **Cancel** takes you back to Agents before anything is created. Once the agent exists, **Finish later** keeps it as a **draft**: test and adjust it in the [Playground](playground), then publish it.
+
+Every new agent starts with a friendly tone and human handoff turned on. Change them in the Playground.
 
 :::note
 How many agents you can have depends on your plan: 1 on Starter, 5 on Growth and 20 on Business. See [Usage and limits](usage-and-limits).
@@ -36,7 +40,7 @@ Publish or unpublish from the agent's **⋯** menu, or from the Playground. Unpu
 
 Each card shows the agent's status, how many knowledge sources it has and its conversations in the last 30 days. Use the search box and the **All**, **Published** and **Drafts** filters to find one. The buttons on the right switch between cards and a list.
 
-@clip agents-actions | Publish an agent from its menu, then search and filter.
+@clip agents-actions | Unpublish an agent from its menu, then search and filter.
 
 The **⋯** menu on each agent has:
 

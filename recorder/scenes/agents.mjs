@@ -1,6 +1,6 @@
 // AI agents: the Agents page, suggested questions, and how an agent answers on a website.
 import { newContext, actor, record, APP, PUBLIC } from "../lib.mjs";
-import { SITE_URL } from "../site.mjs";
+import { SITE_URL, SITE_HOST } from "../site.mjs";
 import { agentWithSite } from "../world.mjs";
 
 /** The store's page with the agent's chat, as a visitor sees it. */
@@ -41,30 +41,39 @@ export async function agents({ browser }) {
   await page.waitForSelector(".agent-create-card");
   await act.pause(700);
 
-  await record(page, "agents-create", { crop: ".main" }, async () => {
-    await act.click(".page-head button:has-text('Create agent')");
-    await page.waitForSelector("#ca-name");
-    await act.type("#ca-name", "Returns Helper");
-    await act.type("#ca-purpose", "Answer questions about returns and exchanges, and help customers start a return.", { delay: 22 });
-    await act.click(".dialog-foot button:has-text('Continue')");
-    await act.click(".choice:has-text('Q&A')");
-    await act.type("#ca-q", "Can I return an item I bought on sale?");
-    await act.type("#ca-a", "Yes. Sale items can be returned within 30 days like any other item, unworn and with their tags.", { delay: 20 });
-    await act.click(".dialog-foot button:has-text('Continue')");
-    await act.pause(1200);
-    await act.click(".dialog-foot button:has-text('Create agent')");
-    await page.waitForSelector(".agent-card:has-text('Returns Helper')", { timeout: 20000 });
+  // A second agent is made with the same full-screen setup as the first one.
+  await record(page, "agents-create", { holdEnd: 2200 }, async () => {
+    await act.click(".agent-create-card");
+    await page.waitForSelector(".onb h1:has-text(\"Let's build another AI agent\")");
+    await act.pause(800);
+    await act.type("#onb-url", SITE_HOST, { clear: true });
+    await act.click("button:has-text('Build my agent')");
+    await page.waitForSelector("h1:has-text(\"Here's what we found\")", { timeout: 60000 });
+    await act.pause(900);
+    await act.type("#onb-agent-name", "Northstar returns", { clear: true });
+    await act.type("#onb-welcome", "Hi! I can help you return or exchange an item.", { clear: true, delay: 24 });
+    await act.pause(500);
+    await act.click("button:has-text('Create my agent')");
+    await page.waitForSelector("h1:has-text('Try your agent')", { timeout: 180000 });
+    await act.pause(900);
     await act.park();
   });
+  await page.click("button:has-text('Looks good')");
+  await page.waitForSelector("h1:has-text('Add the chat to your website')", { timeout: 30000 });
+  await page.click("button:has-text('Go to my dashboard')");
+  await page.waitForSelector(".shell");
+  await page.goto(`${APP}/#/agents`);
+  await page.waitForSelector(".agent-card:has-text('Northstar returns')");
+  await act.pause(700);
 
   await record(page, "agents-actions", { crop: ".main" }, async () => {
-    await act.click(".agent-card:has-text('Returns Helper') button[aria-label^='Actions for']");
+    await act.click(".agent-card:has-text('Northstar returns') button[aria-label^='Actions for']");
     await act.pause(700);
-    await act.click(".popover [role=menuitem]:has-text('Publish')");
+    await act.click(".popover [role=menuitem]:has-text('Unpublish')");
     await act.pause(1600);
     await act.type("input[placeholder='Search agents']", "returns");
     await act.pause(900);
-    await act.click("[role=radio]:has-text('Published'), button:has-text('Published')");
+    await act.click("[role=radio]:has-text('Drafts'), button:has-text('Drafts')");
     await act.park();
   });
   await ctx.close();
@@ -92,8 +101,11 @@ export async function suggestedQuestions({ browser }) {
   });
 
   await record(page, "suggested-translate", { crop: ".main", holdEnd: 2200 }, async () => {
-    await act.click(".suggestion-languages [role=tab]:nth-child(2)");
-    await act.pause(800);
+    // Languages are added from the "+ Language" menu next to the tabs.
+    await act.click(".suggestion-languages .suggestion-add");
+    await act.pause(500);
+    await page.keyboard.type("Uzbek", { delay: 60 });
+    await act.press("Enter", 800);
     await act.click(".suggestion-editor button:has-text('Translate from')");
     await page.waitForSelector(".suggestion-generated", { timeout: 60000 });
     await act.pause(1500);

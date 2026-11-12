@@ -10,8 +10,9 @@ import * as stills from "./scenes/stills.mjs";
 import * as integrations from "./scenes/integrations.mjs";
 import * as insights from "./scenes/insights.mjs";
 import * as workspace from "./scenes/workspace.mjs";
+import * as channels from "./scenes/channels.mjs";
 
-const SCENES = Object.fromEntries(Object.entries({ ...start, ...agents, ...knowledge, ...widget, ...inbox, ...stills, ...integrations, ...insights, ...workspace }).filter(([, f]) => typeof f === "function" && f.length === 1 && /^\s*async/.test(String(f))));
+const SCENES = Object.fromEntries(Object.entries({ ...start, ...agents, ...knowledge, ...widget, ...inbox, ...stills, ...integrations, ...insights, ...workspace, ...channels }).filter(([, f]) => typeof f === "function" && f.length === 1 && /^\s*async/.test(String(f))));
 
 const wanted = process.argv.slice(2);
 const unknown = wanted.filter((n) => !SCENES[n]);

@@ -12,6 +12,7 @@ import http from "node:http";
 import net from "node:net";
 import { startSite, SITE_HOST } from "./site.mjs";
 import { startBusinessApi, API_HOST } from "./business-api.mjs";
+import { startTelegram } from "./telegram.mjs";
 
 const dir = path.dirname(fileURLToPath(import.meta.url));
 export const ROOT = path.resolve(dir, "../..");
@@ -27,6 +28,7 @@ const SITE_PORT = 5301;
 const BIZ_PORT = 5302;
 const POLAR_PORT = 5303;
 const SMTP_PORT = 2526;
+const TELEGRAM_PORT = 5304;
 export const POLAR_SECRET = "whsec_" + Buffer.from("docs-recordings-polar-secret").toString("base64");
 
 const procs = [];
@@ -34,6 +36,7 @@ let site;
 export let bizApi;
 let polar;
 let smtp;
+let telegramApi;
 process.on("exit", () => procs.forEach((p) => p.kill()));
 
 function start(cmd, args, cwd, env) {
@@ -68,6 +71,9 @@ function startApi() {
     ALLOW_PRIVATE_URLS: "true",
     APP_ORIGIN: APP,
     PUBLIC_API_URL: `${PUBLIC}/api`,
+    // Telegram is a local stand-in, and the bot asks it for updates (no webhook can reach this machine).
+    TELEGRAM_API: `http://127.0.0.1:${TELEGRAM_PORT}`,
+    TELEGRAM_POLLING: "true",
     NODE_OPTIONS: `--import ${pathToFileURL(path.join(dir, "preload.mjs")).href}`, // a URL: the path has spaces
     DOCS_HOST_MAP: JSON.stringify({ [SITE_HOST]: `http://127.0.0.1:${SITE_PORT}`, [API_HOST]: `http://127.0.0.1:${BIZ_PORT}` }),
     // Billing is off unless a scene needs it; then Polar's API is a local stand-in (its pages never appear).
@@ -88,11 +94,12 @@ export async function setBilling(on) {
 }
 
 export async function startServices() {
-  for (const port of [3110, 4191, SITE_PORT, BIZ_PORT, POLAR_PORT, SMTP_PORT]) if (up(`http://127.0.0.1:${port}/`)) throw new Error(`Port ${port} is busy; stop whatever runs there first.`);
+  for (const port of [3110, 4191, SITE_PORT, BIZ_PORT, POLAR_PORT, SMTP_PORT, TELEGRAM_PORT]) if (up(`http://127.0.0.1:${port}/`)) throw new Error(`Port ${port} is busy; stop whatever runs there first.`);
   site = await startSite(SITE_PORT);
   bizApi = await startBusinessApi(BIZ_PORT);
   polar = await startPolar(POLAR_PORT);
   smtp = await startSmtp(SMTP_PORT);
+  telegramApi = await startTelegram(TELEGRAM_PORT);
   execFileSync("node", ["scripts/migrate.js"], { cwd: path.join(ROOT, "replybek-backend"), env: { ...process.env, PGDATABASE: "replybek_docs" }, stdio: "ignore" });
   startApi();
   // A private build of the dashboard: the dev server would reload mid-clip whenever someone edits the app,
@@ -111,6 +118,7 @@ export function stopServices() {
   bizApi?.close();
   polar?.close();
   smtp?.close();
+  telegramApi?.close();
 }
 
 /** Accepts any email and throws it away. */

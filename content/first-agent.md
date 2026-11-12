@@ -55,7 +55,7 @@ Press **Looks good**. Replybek publishes the agent and shows the code for your w
 Before your agent can answer visitors, start the 7-day free trial. You add a card on Polar's secure page, and nothing is charged for 7 days. Until then you can test the agent with 30 free answers. See [Plans and billing](plans-and-billing).
 :::
 
-Not ready to edit your site? Press **Go to my dashboard** and come back to the code any time from [Website widget](install-widget).
+Not ready to edit your site? Press **Go to my dashboard** and come back to the code any time from **Channels** → [Website widget](install-widget).
 
 ## What to do next
 

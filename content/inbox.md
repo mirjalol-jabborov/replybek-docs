@@ -3,7 +3,7 @@ title: Inbox
 description: Every conversation from your website in one place, updating live. See what the AI answered and step in when a customer needs a person.
 ---
 
-Open **Inbox** in the sidebar. The list on the left shows every conversation from your website widgets, newest activity first. The conversation you open is in the middle, and details about the visitor are on the right.
+Open **Inbox** in the sidebar. The list on the left shows every conversation from your website widgets and [Telegram bot](telegram), newest activity first. The conversation you open is in the middle, and details about the visitor are on the right.
 
 New messages appear on their own, within about a second. You don't need to refresh.
 

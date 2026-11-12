@@ -14,4 +14,4 @@ services:
 networks:
   web:
     external: true
-    name: didar_default         # the main Caddy's network
+    name: edge                # the Caddy network (/opt/caddy)

@@ -11,7 +11,7 @@ Each plan has limits on AI messages, agents, team seats, knowledge sources and p
 
 ## How AI messages are counted
 
-Every reply the AI writes counts as one AI message: in the website widget and in the Playground. Replies from your team don't count.
+Every reply the AI writes counts as one AI message: in the website widget, in Telegram and in the Playground. Replies from your team don't count.
 
 The allowance is per calendar month and starts again on the 1st.
 
