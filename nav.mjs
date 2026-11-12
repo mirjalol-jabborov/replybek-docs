@@ -10,7 +10,7 @@ export const NAV = [
   { group: "Get started", pages: ["index", "first-agent", "best-practices"] },
   { group: "AI agents", pages: ["agents", "playground", "suggested-questions", "how-agents-answer"] },
   { group: "Knowledge", pages: ["knowledge", "websites", "files", "qa", "unanswered"] },
-  { group: "Channels", pages: ["install-widget", "customize-widget", "widget-languages", "visitor-experience", "telegram"] },
+  { group: "Channels", pages: ["install-widget", "customize-widget", "widget-languages", "visitor-experience", "telegram", "telegram-business"] },
   { group: "Inbox", pages: ["inbox", "handoff", "replies-and-notes", "assign-and-resolve", "email-alerts"] },
   {
     group: "Integrations",
